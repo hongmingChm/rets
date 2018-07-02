@@ -82,7 +82,7 @@ module Rets
           CGI.unescape_html(x)
         end
 
-        zipped_key_values = column_names.zip(data_values).map { |k, v| [k.freeze, v.to_s] }
+        zipped_key_values = column_names.zip(data_values).map { |k, v| [k.downcase.freeze, v.to_s] }
 
         hash = Hash[*zipped_key_values.flatten]
         hash.reject { |key, value| key.empty? && value.to_s.empty? }
